@@ -1,0 +1,80 @@
+/***************************GLOBAL VARIABLE DECLARATIONS***************************/
+
+//define global properties
+//syntax : $property-name: value;
+$primary-color: green;
+$secondary-color: blue;
+$tertiary-color: red;
+
+/***************************MAP DECLARATIONS***************************/
+
+//defined maps
+//syntax : $map-name: (key: value, key: value, ...);
+$font-weights: (
+  thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  bold: 700,
+  bolder: 900,
+);
+
+$text_color: (
+  white: white,
+  black: black,
+  red: red,
+);
+
+$text_size: (
+  small: 12px,
+  medium: 14px,
+  regular: 16px,
+  large: 18px,
+  xlarge: 20px,
+  xxlarge: 24px,
+  xxxlarge: 28px,
+  verylarge: 32px,
+);
+
+/***************************************PROPERTIES APPLIED TO BODY***************************************/
+
+body {
+  //set variable in a property
+  background: $primary-color;
+  //use map to set variable in a property
+  //   font-weight: map-get($font-weights, regular);
+  color: map-get($text_color, white);
+  font-size: map-get($text_size, large);
+}
+
+/*********************************NESTING IN SASS*********************************/
+
+.main {
+  width: 80%;
+  margin: 0 auto;
+  //targeting element directly
+
+  //   p {
+  //     font-weight: map-get($font-weights, bolder);
+  //     //we can use & (symbol) to target the parent element
+  //     &:hover {
+  //       color: map-get($text_color, black);
+  //       font-weight: map-get($font-weights, regular);
+  //     }
+  //   }
+
+  /************************************************/
+
+
+  //targeting element by class
+  //syntax  parent__classname{properties}
+  .paragraph {
+    font-weight: map-get($font-weights, bolder);
+    font-size: map-get($text_size, large);
+    &:hover {
+      color: map-get($text_color, black);
+      font-weight: map-get($font-weights, regular);
+      font-size: map-get($text_size, verylarge);
+    }
+  }
+}
